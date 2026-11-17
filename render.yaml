@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: tictactoe-arena
+    runtime: docker
+    plan: free
+    region: oregon
+    healthCheckPath: /health
+    autoDeploy: true
+    envVars:
+      - key: PORT
+        value: 10000
+      - key: ARENA_STORAGE
+        value: csv

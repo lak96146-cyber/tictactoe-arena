@@ -1,0 +1,22 @@
+[Unit]
+Description=Tic-Tac-Toe Arena Authoritative Game Server
+After=network.target
+
+[Service]
+Type=simple
+User=ubuntu
+WorkingDirectory=/opt/tictactoe
+ExecStart=/usr/bin/java -Djava.awt.headless=true -jar /opt/tictactoe/tictactoe-server.jar 8888
+Restart=always
+RestartSec=5
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=tictactoe-server
+
+# Security sandboxing
+NoNewPrivileges=true
+ProtectSystem=full
+ProtectHome=read-only
+
+[Install]
+WantedBy=multi-user.target
